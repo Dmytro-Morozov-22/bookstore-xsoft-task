@@ -1,6 +1,4 @@
-
 package com.morozov.projects.bookstore_xsoft_task.service.impl;
-
 
 import com.morozov.projects.bookstore_xsoft_task.dto.UserDto;
 import com.morozov.projects.bookstore_xsoft_task.model.Role;
@@ -10,6 +8,7 @@ import com.morozov.projects.bookstore_xsoft_task.repository.UserRepository;
 import com.morozov.projects.bookstore_xsoft_task.service.UserService;
 import com.morozov.projects.bookstore_xsoft_task.util.TbConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -42,5 +41,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByEmail(String email) {
         return null;
+    }
+
+    @Override
+    public String getCurrentUser(){
+        return SecurityContextHolder.getContext().getAuthentication().getName();
     }
 }
