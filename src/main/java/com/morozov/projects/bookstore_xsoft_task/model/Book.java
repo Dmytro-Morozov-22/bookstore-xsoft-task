@@ -5,8 +5,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @Entity
 @Table(name = "books")
@@ -30,14 +28,20 @@ public class Book {
     @JsonIgnore
     private User user;
 
-    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "id")
     @JsonIgnore
-    private List<Category> category;
+    private Category category;
 
-    public Book(String name, String author, String description, User user) {
+//    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
+//    @JsonIgnore
+//    private List<Category> category;
+
+    public Book(String name, String author, String description, User user, Category category) {
         this.name = name;
         this.author = author;
         this.description = description;
         this.user = user;
+        this.category = category;
     }
 }

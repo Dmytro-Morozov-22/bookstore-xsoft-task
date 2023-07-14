@@ -15,4 +15,7 @@ public class BookDto {
 
     @NotEmpty(message = "Please enter valid description")
     private String description;
+
+    @NotEmpty(message = "Please select category")
+    private String category;
 }

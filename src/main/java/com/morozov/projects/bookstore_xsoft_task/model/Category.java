@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "categories")
@@ -18,10 +20,15 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "book_id", referencedColumnName = "id")
+//    @ManyToOne
+//    @JoinColumn(name = "book_id", referencedColumnName = "id")
+//    @JsonIgnore
+//    private Book book;
+
+    @OneToMany(mappedBy = "category")
     @JsonIgnore
-    private Book book;
+    private List<Book> book;
+
 
     public Category(String name) {
         this.name = name;

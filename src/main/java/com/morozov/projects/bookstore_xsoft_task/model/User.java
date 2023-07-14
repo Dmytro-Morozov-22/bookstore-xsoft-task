@@ -1,6 +1,5 @@
 package com.morozov.projects.bookstore_xsoft_task.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +29,9 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
     private List<Role> roles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    List<Book> book;
 
     public User(String name, String email, String password, List<Role> roles) {
         this.name = name;
