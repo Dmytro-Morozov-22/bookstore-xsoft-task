@@ -1,6 +1,6 @@
 # Task description:
 The application must contain two roles: READER and LIBRARIAN. In the library, books are sorted by category. 
-The LIBRARIAN should be able to: 
+The LIBRARIAN should be able to:__ 
 • add new categories of literature that will be available in the library 
 • add books to these categories 
 • edit book attributes 
